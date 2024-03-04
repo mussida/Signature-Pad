@@ -1,0 +1,19 @@
+<div class="flex flex-col justify-center items-center">
+  <canvas #signaturePad class="border-2" width="500" height="300"></canvas>
+  <div class="flex gap-2">
+    <button
+      #button
+      class="bg-gray-400 text-white px-2 py-1 mt-2 rounded-lg"
+      (click)="signatureSave()"
+    >
+      Save
+    </button>
+    <button
+      #button
+      class="bg-red-900 text-white px-2 py-1 mt-2 rounded-lg"
+      (click)="signatureClear()"
+    >
+      Clear
+    </button>
+  </div>
+</div>
