@@ -93,11 +93,34 @@ export class OrginalSignaturePadComponent
   /**
    * Redraw or Resize canvas, note this will clear data.
    */
+  // public redrawCanvas(): void {
+  //   const ratio: number = Math.max(window.devicePixelRatio || 2, 3);
+  //   console.log('devicePixelRatio', window.devicePixelRatio);
+  //   console.log('ratio', ratio);
+  //   const rect = this.canvasElement.nativeElement.getBoundingClientRect();
+  //   console.log('rect', rect);
+  //   this.canvasElement.nativeElement.width = rect.width * ratio;
+  //   this.canvasElement.nativeElement.height = rect.height * ratio;
+  //   this.canvasElement.nativeElement?.getContext('2d')?.scale(ratio, ratio);
+  //   this.signaturePad.clear(); // otherwise isEmpty() might return incorrect value
+  // }
   public redrawCanvas(): void {
-    const ratio: number = Math.max(window.devicePixelRatio || 2, 3);
+    const ratio: number = Math.max(window.devicePixelRatio || 1, 1);
+    console.log('devicePixelRatio', window.devicePixelRatio);
+    console.log('ratio', ratio);
     const rect = this.canvasElement.nativeElement.getBoundingClientRect();
+    console.log('rect', rect);
+    console.log('rect.width', rect.width);
+    console.log('rect.height', rect.height);
+    console.log(
+      'canvaselement',
+      this.canvasElement.nativeElement.width,
+      this.canvasElement.nativeElement.height
+    );
+
     this.canvasElement.nativeElement.width = rect.width * ratio;
     this.canvasElement.nativeElement.height = rect.height * ratio;
+
     this.canvasElement.nativeElement?.getContext('2d')?.scale(ratio, ratio);
     this.signaturePad.clear(); // otherwise isEmpty() might return incorrect value
   }
