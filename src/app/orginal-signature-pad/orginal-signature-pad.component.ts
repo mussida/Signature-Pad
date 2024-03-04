@@ -61,13 +61,11 @@ export class OrginalSignaturePadComponent
       return;
     }
 
-    if (this.options.canvasHeight) {
-      this.canvasElement.nativeElement.height = this.options.canvasHeight;
-    }
-
-    if (this.options.canvasWidth) {
-      this.canvasElement.nativeElement.width = this.options.canvasWidth;
-    }
+    const ratio: number = Math.max(window.devicePixelRatio || 1, 1);
+    const rect = this.canvasElement.nativeElement.getBoundingClientRect();
+    this.canvasElement.nativeElement.width = rect.width * ratio;
+    this.canvasElement.nativeElement.height = rect.height * ratio;
+    this.canvasElement.nativeElement?.getContext('2d')?.scale(ratio, ratio);
 
     this.signaturePad = new SignaturePad(
       this.canvasElement.nativeElement,
